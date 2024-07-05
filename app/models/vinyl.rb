@@ -1,4 +1,5 @@
 class Vinyl < ApplicationRecord
   belongs_to :genre
-  belongs_to :author
+  belongs_to :artist
+  belongs_to :user
 end

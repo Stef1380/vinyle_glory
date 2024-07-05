@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_03_105455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authors", force: :cascade do |t|
+  create_table "artists", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,15 +43,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_03_105455) do
     t.integer "time"
     t.integer "price"
     t.integer "year"
-    t.string "status"
+    t.string "condition"
     t.bigint "genre_id", null: false
-    t.bigint "author_id", null: false
+    t.bigint "artist_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_vinyls_on_author_id"
+    t.index ["artist_id"], name: "index_vinyls_on_artist_id"
     t.index ["genre_id"], name: "index_vinyls_on_genre_id"
+    t.index ["user_id"], name: "index_vinyls_on_user_id"
   end
 
-  add_foreign_key "vinyls", "authors"
+  add_foreign_key "vinyls", "artists"
   add_foreign_key "vinyls", "genres"
+  add_foreign_key "vinyls", "users"
 end

@@ -1,2 +1,11 @@
-<h1>Pages#home</h1>
+<h1>Pages#index</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<h2>Lste des vinyls du magasin</h2>
+  <ul>
+    <% @vinyls.each do |vinyl| %>
+      <li>
+        <%= link_to vinyl.name, vinyl_path(vinyl)%>
+      </li>
+    <% end %>
+</ul>

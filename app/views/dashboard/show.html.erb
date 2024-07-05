@@ -1,0 +1,21 @@
+<h1> dashboard de l'utilisateur</h1>
+
+
+<h2>Liste des vinyls de <%= current_user.email %> </h2>
+  <ul>
+    <% @vinyls.each do |vinyl| %>
+      <li>
+        <%= link_to vinyl.name, vinyl_path(vinyl)%>
+      </li>
+    <% end %>
+</ul>
+
+<%= simple_form_for @vinyl, url: vinyls_path, method: :post do |f| %>
+  <%= f.input :name %>
+  <%= f.input :year %>
+  <%= f.input :condition %>
+  <%= f.input :time %>
+  <%= f.association :genre, collection: Genre.all, prompt: "Select a genre" %>
+  <%= f.association :artist, collection: Artist.all, prompt: "Select an artist" %>
+  <%= f.submit %>
+<% end %>
